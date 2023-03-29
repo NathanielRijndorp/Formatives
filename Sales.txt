@@ -1,0 +1,17 @@
+******Rijndorp & Co., Ltd - Risk Management & Asset Counseling for Standard & Poor's 500******
+Year             :            2023
+**********************************************************************************************
+Month               	Gross Income        Total Expenses      Net Income          
+January             	500000.00         	50.00             	499950.00         
+February            	50.00             	50.00             	0.00              
+March               	50.00             	50.00             	0.00              
+April               	50.00             	50.00             	0.00              
+May                 	50.00             	50.00             	0.00              
+June                	50.00             	50.00             	0.00              
+July                	50.00             	50.00             	0.00              
+August              	50.00             	50.00             	0.00              
+September           	50.00             	50.00             	0.00              
+October             	50.00             	50.00             	0.00              
+November            	50.00             	50.00             	0.00              
+December            	50.00             	50.00             	0.00              
+Total               	500550.00         	600.00            	499950.00         
