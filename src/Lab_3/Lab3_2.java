@@ -31,19 +31,14 @@ public class Lab3_2 {
         average = (exam1 + exam2 + exam3 + exam4)/4;
         average = Math.round(average*100.0f)/100.0f;
         if (average >= 75) {
-
             remarks = "Passed";
-
         } else {
-
             remarks = "Failed";
-
         }
         JOptionPane.showMessageDialog(null, "Student's name: " + name + "\nProgram name:" + program + "\nCourse: " + course + "\n\n 1st        2nd        3rd        4th\n"
                 + exam1 + "     " + exam2 + "     " + exam3 + "     " + exam4 + "\n\nAverage:" + average + "\nRemarks:" + remarks);
         int dialogButton = JOptionPane.YES_NO_OPTION;
         JOptionPane.showConfirmDialog (null, "Would you like to save your information?");
-
         if (dialogButton == JOptionPane.YES_OPTION) {
             try {
                 output = "\n\tName \t\t\t\t Program \t\t Course \t\t First \t Second \t Third \t Fourth \t Average \t Remarks" + "\n" + name + "\t" + program + "\t" + course + "\t\t\t " + exam1 + "\t  " + exam2 + "\t     " + exam3 + "\t  " + exam4 + "\t      " + average + "\t\t  " + remarks;
