@@ -19,7 +19,6 @@ public class NumberTxt {
         String numbers = "All the numbers!", numbers_odd = "", numbers_even = "";
         int sum_first_row = 0, sum_second_row = 0, sum_third_row = 0, sum_fourth_row = 0, sum_fifth_row = 0, sumAll;
         float avg_first_row, avg_second_row, avg_third_row, avg_fourth_row, avg_fifth_row, avgAll;
-        int lowest_first_row = 0, lowest_second_row = 0, lowest_third_row = 0, lowest_fourth_row = 0, lowest_fifth_row = 0;
         int[] lowest = new int[5];
         int highest_of_all = 0, lowest_of_all = 0;
         int odd_sum = 0, even_sum = 0;
@@ -65,7 +64,7 @@ public class NumberTxt {
         }
         for (int[] ints : number) {
             for (int g = 0; g < lowest.length; g++) {
-                if (ints[g] < lowest_first_row) {
+                if (ints[g] < lowest[g]) {
                     lowest[g] = ints[g];
                 }
                 if (ints[g] > highest_of_all) {

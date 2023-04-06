@@ -7,9 +7,9 @@ public class StringCount {
         // variables
         String str_vow = "", str_con = "", str_odd = "", str_even = "", str_special = "", str_zero = "", str_space = "";
         String author = "Created by Nathaniel P. Rijndorp";
-        int vowels = 0, consonants = 0, space = 0, zero = 0, odd = 0, even = 0, special = 0, huhubels = 0;
+        int vowels = 0, consonants = 0, space = 0, zero = 0, odd = 0, even = 0, special = 0, counter = 0;
         // util
-        while (huhubels == 0) {
+        while (counter == 0) {
             String input = String.valueOf(JOptionPane.showInputDialog(null, new JTextArea("Type a word: "), author, 1));
             if (input.length() == 0 || input == "null") {
                 JOptionPane.showMessageDialog(null, "WARNING! EMPTY STRING DETECTED! ", "Warning", JOptionPane.WARNING_MESSAGE);
@@ -54,7 +54,7 @@ public class StringCount {
                         "\nEven\t: " + even +
                         "\nSpecial\t: " + special);
                 JOptionPane.showMessageDialog(null, new JTextArea(output) , author,1);
-                huhubels++;
+                counter++;
             }
         }
     }
