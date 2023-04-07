@@ -31,8 +31,8 @@ public class Sentinel {
                 if (String.valueOf(input.charAt(i)).matches("[13579]")) {
                     odd_num += String.valueOf(input.charAt(i)) + " ";
                     odd_count++;
-            }
-            if (String.valueOf(input.charAt(i)).matches("[2468]")) {
+                }
+                if (String.valueOf(input.charAt(i)).matches("[2468]")) {
                     even_num += String.valueOf(input.charAt(i)) + " ";
                     even_count++;
             }
