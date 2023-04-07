@@ -1,6 +1,7 @@
 package Lab_5_2;
 
 import javax.swing.*;
+import java.util.Scanner;
 
 public class Login {
     public static void main(String[] args) {
@@ -72,6 +73,25 @@ public class Login {
             }
         }
         // EOF
-
+        String tries = "2 1 0";
+        Scanner scanner = new Scanner(tries);
+        while (scanner.hasNext()) {
+            String user_login = String.valueOf(JOptionPane.showInputDialog(null, "EOF Enter username: ", author, JOptionPane.QUESTION_MESSAGE));
+            String user_pass = String.valueOf(JOptionPane.showInputDialog(null, "Enter password: ", author, JOptionPane.QUESTION_MESSAGE));
+            String test = scanner.next();
+            if (user_login.equals(username)) {
+                if (user_pass.equals(password)) {
+                    JOptionPane.showMessageDialog(null, success_login, author, JOptionPane.INFORMATION_MESSAGE);
+                    break;
+                } else {
+                    JOptionPane.showMessageDialog(null, fail_login + "! You have " + test + " left!", author, JOptionPane.WARNING_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, fail_login + "! You have " + test + " left!", author, JOptionPane.WARNING_MESSAGE);
+            }
+            if (!scanner.hasNext()) {
+                JOptionPane.showMessageDialog(null, "You ran out of attempts. Program is now terminating...", author, JOptionPane.WARNING_MESSAGE);
+            }
+        }
     }
 }
