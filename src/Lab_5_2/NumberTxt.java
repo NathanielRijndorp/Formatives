@@ -56,11 +56,9 @@ public class NumberTxt {
             System.out.println("No.");
         }
         for (int r = 0; r < number.length; r++) {
-            sum_first_row += number[r][0];
-            sum_second_row += number[r][1];
-            sum_third_row += number[r][2];
-            sum_fourth_row += number[r][3];
-            sum_fifth_row += number[r][4];
+            sum_first_row += number[r][0] ; sum_second_row += number[r][1];
+            sum_third_row += number[r][2] ; sum_fourth_row += number[r][3];
+            sum_fifth_row += number[r][4] ;
         }
         for (int[] ints : number) {
             for (int g = 0; g < lowest.length; g++) {

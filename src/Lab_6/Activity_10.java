@@ -40,21 +40,21 @@ public class Activity_10 {
                 System.out.println(matching);
             }
         }
-        String pet_shit = "";
+        String pet_final = "";
         String[] pet_delete = new String[matching];
         System.out.println(Arrays.toString(pet_delete));
         int counter = 0;
         for (int i = 0; i < pet.length; i++) {
             if (!pet[i].equalsIgnoreCase(find_pet)) {
               pet_delete[counter] = pet[i];
-              pet_shit +=  " " + pet_delete[counter];
+              pet_final +=  " " + pet_delete[counter];
               counter++;
             }
         }
         if (!pet_exist) {
             JOptionPane.showMessageDialog(null, "Pet names are:" + pet_list + "\nSearch a value: " + find_pet + "\n" + find_pet + " is NOT Found", author, JOptionPane.INFORMATION_MESSAGE);
         } else {
-            JOptionPane.showMessageDialog(null, "Old Pet names are:" + pet_list + "\nNew Pet names are:" + pet_shit, author, JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Old Pet names are:" + pet_list + "\nNew Pet names are:" + pet_final, author, JOptionPane.INFORMATION_MESSAGE);
         }
     }
 }

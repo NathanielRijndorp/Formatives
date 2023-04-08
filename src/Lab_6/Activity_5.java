@@ -10,7 +10,6 @@ public class Activity_5 {
         for (int i = 0; i < arr.length; i++) {
             arr[i] = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter Number: "));
             arr_val+= " " + arr[i];
-
         }
         for (int i = 0; i < arr.length; i++) {
             reverse_arr+= " " + (arr[9-i]);
