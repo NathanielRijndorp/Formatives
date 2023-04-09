@@ -23,7 +23,5 @@ public class Activity_2 {
         int val = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter number to convert: ", author, JOptionPane.INFORMATION_MESSAGE));
         String bin = binary(val);
         JOptionPane.showMessageDialog(null, "Converted value is: " + bin);
-
-
     }
 }

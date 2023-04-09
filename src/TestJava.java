@@ -10,7 +10,7 @@ public class TestJava {
         // Initialization
         String title = "Adrian Carlo A. Menguita", output;
         TestJava set = new TestJava();
-        int[] A = {1, 2, 3}, B = {2, 3, 4};
+        int[] A = {1, 2, 3}, B = {3, 4, 5};
         // Output
         output = String.format("""
                 Union: %s

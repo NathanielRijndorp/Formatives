@@ -15,11 +15,11 @@ public class Activity_5 {
             }
         }
         int[] unionSet = new int[len-dupes];
-        for (int i = 0; i < unionSet.length; i++) {
+        for (int i = 0; i < unionSet.length+dupes; i++) {
             if (i < a.length) {
                 unionSet[i] = a[i];
             } else {
-                unionSet[i] = b[a.length+b_counter-1];
+                unionSet[i-dupes] = b[b_counter];
                 b_counter++;
             }
         }
@@ -27,25 +27,32 @@ public class Activity_5 {
     }
     public static int[] unionAll (int[] a, int[] b) {
         int len = a.length + b.length;
-        int dupes = 0;
+        int[] arr_rep = new int[len];
+        int b_counter =0;
         int[] unionSetAll = new int[len];
         for (int i = 0; i < len; i++) {
-            if (i < a.length ) {
-                unionSetAll[i+dupes] = a[i];
-                if (i >= 1) {
-                    if (a[i] == b[i-1]) {
-                        dupes++;
-                        unionSetAll[i+dupes] = a[i];
+            if (i < a.length) {
+                unionSetAll[i] = a[i];
+                for (int x = 0; x < a.length; x++) {
+                    if (a[i] == b[x]) {
+                        arr_rep[i] = a[i];
                     }
                 }
-            } else if (i + dupes + 1 <= a.length + b.length) {
-                unionSetAll[i + dupes] = b[b.length - i + dupes];
+            } else if (i < len) {
+                unionSetAll[i] = b[b_counter];
+                b_counter++;
+            }
+        }
+        for (int i = 0; i < len; i++) {
+            if (!(arr_rep[i] == 0)) {
+                unionSetAll[i+1] = arr_rep[i];
             }
         }
         return unionSetAll;
     }
     public static int[] intersection (int[] a, int[] b) {
         int dupes = 0;
+        int counter = 0;
         for (int i = 0; i < b.length; i++) {
             for (int x = 0; x < b.length; x++) {
                 if (a[i] == b[x]) {
@@ -57,7 +64,8 @@ public class Activity_5 {
         for (int i = 0; i < b.length; i++) {
             for (int x = 0; x < b.length; x++) {
                 if (a[i] == b[x]) {
-                    items[i-1] = a[i];
+                    items[counter] = a[i];
+                    counter++;
                 }
             }
         }
@@ -94,8 +102,6 @@ public class Activity_5 {
             JOptionPane.showMessageDialog(null, "Invalid input:" );
         }
         return item;
-        // 1,2,3
-        // 2,3,4
     }
     public static String complement (int[] a, int[] b, int comp_select) {
         String item = "";
@@ -159,19 +165,12 @@ public class Activity_5 {
         String author = "Created by: Nathaniel P. Rijndorp";
         int set_select = Integer.parseInt(JOptionPane.showInputDialog(null, "[0] For difference A/B: " +
                     "\n[1] For difference B/A: "));
-        int comp_select = Integer.parseInt(JOptionPane.showInputDialog(null, "[0] For complement A: " +
-                    "\n[1] For complement B: "));
+        int comp_select = Integer.parseInt(JOptionPane.showInputDialog(null, "[0] For complement A': " +
+                    "\n[1] For complement B': "));
 
         int[] a = {1,2,3};
         int[] b = {2,3,4};
 
-        for (int i = 0; i < a.length; i++) {
-            a[i] = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter value for Set A :", author, JOptionPane.INFORMATION_MESSAGE));
-        }
-
-        for (int i = 0; i < b.length; i++) {
-            b[i] = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter value for Set B :", author, JOptionPane.INFORMATION_MESSAGE));
-        }
         JOptionPane.showMessageDialog(null, "Union: " + (Arrays.toString(union(a,b))) +
                 "\nUnionAll: " + (Arrays.toString(unionAll(a,b))) +
                 "\nIntersection: " + (Arrays.toString(intersection(a,b))) +
