@@ -4,7 +4,7 @@ import javax.swing.*;
 
 public class Activity_4 {
     public static int sumDouble(int a, int b) {
-        int c = 0;
+        int c;
         if (a == b) {
             c = (a + b) * 2;
         } else {

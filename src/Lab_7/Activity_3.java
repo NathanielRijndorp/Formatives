@@ -12,7 +12,7 @@ public class Activity_3 {
         return value;
     }
     public static boolean isPalindrome(String strReverse) {
-        return strReverse.equalsIgnoreCase(reverse(strReverse));
+        return  strReverse == (reverse(strReverse));
     }
     public static void main(String[] args) {
         String author = "Created by: Nathaniel P. Rijndorp";
