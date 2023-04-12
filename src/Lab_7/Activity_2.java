@@ -4,18 +4,14 @@ import javax.swing.*;
 
 public class Activity_2 {
     public static String binary(int val) {
-        String binaryNumber = "", reverse_binaryNumber = "";
-        int counter = 0;
-        reverse_binaryNumber += val%2 == 0 ? 0 : 1;
+        String binaryNumber = "";
+        int number = 0;
         while (!(val == 1)) {
             val = val/2;
-            reverse_binaryNumber+= val%2;
-            counter++;
+            number = val%2==0 ? 0 : 1;
+            binaryNumber += number;
         }
-        System.out.println(reverse_binaryNumber);
-        for (int i = counter; i > -1; i--) {
-            binaryNumber += reverse_binaryNumber.charAt(i);
-        }
+        binaryNumber += val%2 == 0 ? 1 : 0;
         return binaryNumber;
     }
     public static void main(String[] args) {

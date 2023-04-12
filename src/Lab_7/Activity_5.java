@@ -4,19 +4,43 @@ import javax.swing.*;
 import java.util.Arrays;
 
 public class Activity_5 {
+    public static int a_len (int [] a) {
+        int length = 0;
+        for (int ints : a) {
+            length++;
+        }
+        return length;
+    }
+    public static int b_len (int [] b) {
+        int length = 0;
+        for (int ints : b) {
+            length++;
+        }
+        return length;
+    }
+    public static int ab_len (int [] a, int[] b) {
+        int length = 0;
+        for (int ints : a) {
+            length++;
+        }
+        for (int ints : b) {
+            length++;
+        }
+        return length;
+    }
     public static int[] union (int[] a, int[] b) {
-        int dupes = 0, len = a.length + b.length;
+        int dupes = 0, len = ab_len(a,b);
         int b_counter = 0;
-        for (int i = 0; i < a.length; i++) {
-            for (int x = 0; x < b.length; x++) {
+        for (int i = 0; i < a_len(a); i++) {
+            for (int x = 0; x < b_len(b); x++) {
                 if (a[i] == b[x]) {
                     dupes++;
                 }
             }
         }
         int[] unionSet = new int[len-dupes];
-        for (int i = 0; i < unionSet.length+dupes; i++) {
-            if (i < a.length) {
+        for (int i = 0; i < (len-dupes)+dupes; i++) {
+            if (i < a_len(a)) {
                 unionSet[i] = a[i];
             } else {
                 unionSet[i-dupes] = b[b_counter];
@@ -26,14 +50,14 @@ public class Activity_5 {
         return unionSet;
     }
     public static int[] unionAll (int[] a, int[] b) {
-        int len = a.length + b.length;
+        int len = ab_len(a,b);
         int[] arr_rep = new int[len];
         int b_counter =0;
         int[] unionSetAll = new int[len];
         for (int i = 0; i < len; i++) {
-            if (i < a.length) {
+            if (i < a_len(a)) {
                 unionSetAll[i] = a[i];
-                for (int x = 0; x < a.length; x++) {
+                for (int x = 0; x < b_len(b); x++) {
                     if (a[i] == b[x]) {
                         arr_rep[i] = a[i];
                     }
@@ -53,16 +77,16 @@ public class Activity_5 {
     public static int[] intersection (int[] a, int[] b) {
         int dupes = 0;
         int counter = 0;
-        for (int i = 0; i < b.length; i++) {
-            for (int x = 0; x < b.length; x++) {
+        for (int i = 0; i < a_len(a); i++) {
+            for (int x = 0; x < b_len(b); x++) {
                 if (a[i] == b[x]) {
-                   dupes++;
+                    dupes++;
                 }
             }
         }
         int[] items = new int[dupes];
-        for (int i = 0; i < b.length; i++) {
-            for (int x = 0; x < b.length; x++) {
+        for (int i = 0; i < a_len(a); i++) {
+            for (int x = 0; x < b_len(b); x++) {
                 if (a[i] == b[x]) {
                     items[counter] = a[i];
                     counter++;
@@ -74,24 +98,24 @@ public class Activity_5 {
     public static String difference (int[] a, int[] b, int set_select) {
         String item = "";
         if (set_select == 0) {
-            for (int i = 0; i < b.length; i++) {
+            for (int i = 0; i < a_len(a); i++) {
                 int counter = 0;
-                for (int x = 0; x < b.length; x++) {
+                for (int x = 0; x < b_len(b); x++) {
                     if (a[i] != b[x]) {
                         counter++;
-                        if (counter >= b.length) {
+                        if (counter >= b_len(b)) {
                             item += " " + (a[i]);
                         }
                     }
                 }
             }
         } else if (set_select == 1) {
-            for (int i = 0; i < b.length; i++) {
+            for (int i = 0; i < a_len(a); i++) {
                 int counter = 0;
-                for (int x = 0; x < b.length; x++) {
+                for (int x = 0; x < b_len(b); x++) {
                     if (b[i] != a[x]) {
                         counter++;
-                        if (counter >= b.length) {
+                        if (counter >= b_len(b)) {
                             item += " " + (b[i]);
                         }
                     }
@@ -106,24 +130,24 @@ public class Activity_5 {
     public static String complement (int[] a, int[] b, int comp_select) {
         String item = "";
         if (comp_select == 0) {
-            for (int i = 0; i < b.length; i++) {
+            for (int i = 0; i < b_len(b); i++) {
                 int counter = 0;
-                for (int x = 0; x < b.length; x++) {
+                for (int x = 0; x < a_len(a); x++) {
                     if (b[i] != a[x]) {
                         counter++;
-                        if (counter >= b.length) {
+                        if (counter >= a_len(a)) {
                             item += " " + (b[i]);
                         }
                     }
                 }
             }
         } else if (comp_select == 1) {
-            for (int i = 0; i < b.length; i++) {
+            for (int i = 0; i < a_len(a); i++) {
                 int counter = 0;
-                for (int x = 0; x < b.length; x++) {
+                for (int x = 0; x < b_len(b); x++) {
                     if (a[i] != b[x]) {
                         counter++;
-                        if (counter >= b.length) {
+                        if (counter >= b_len(b)) {
                             item += " " + (a[i]);
                         }
                     }
@@ -137,23 +161,23 @@ public class Activity_5 {
     }
     public static String symmetricDiff (int[] a, int[] b) {
         String item = "";
-            for (int i = 0; i < b.length; i++) {
-                int counter = 0;
-                for (int x = 0; x < b.length; x++) {
-                    if (a[i] != b[x]) {
-                        counter++;
-                        if (counter >= b.length) {
-                            item += " " + (a[i]);
-                        }
+        for (int i = 0; i < a_len(a); i++) {
+            int counter = 0;
+            for (int x = 0; x < b_len(b); x++) {
+                if (a[i] != b[x]) {
+                    counter++;
+                    if (counter >= b_len(b)) {
+                        item += " " + (a[i]);
                     }
                 }
             }
-        for (int i = 0; i < b.length; i++) {
+        }
+        for (int i = 0; i < a_len(a); i++) {
             int counter = 0;
-            for (int x = 0; x < b.length; x++) {
+            for (int x = 0; x < b_len(b); x++) {
                 if (b[i] != a[x]) {
                     counter++;
-                    if (counter >= b.length) {
+                    if (counter >= b_len(b)) {
                         item += " " + (b[i]) ;
                     }
                 }
@@ -164,9 +188,9 @@ public class Activity_5 {
     public static void main(String[] args) {
         String author = "Created by: Nathaniel P. Rijndorp";
         int set_select = Integer.parseInt(JOptionPane.showInputDialog(null, "[0] For difference A/B: " +
-                    "\n[1] For difference B/A: "));
+                "\n[1] For difference B/A: "));
         int comp_select = Integer.parseInt(JOptionPane.showInputDialog(null, "[0] For complement A': " +
-                    "\n[1] For complement B': "));
+                "\n[1] For complement B': "));
 
         int[] a = {1,2,3};
         int[] b = {2,3,4};
