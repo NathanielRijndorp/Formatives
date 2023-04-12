@@ -52,14 +52,14 @@ public class Activity_5 {
     public static int[] unionAll (int[] a, int[] b) {
         int len = ab_len(a,b);
         int[] arr_rep = new int[len];
-        int b_counter =0;
+        int b_counter = 0, swap_counter = 0, special_counter = 0;
         int[] unionSetAll = new int[len];
         for (int i = 0; i < len; i++) {
             if (i < a_len(a)) {
                 unionSetAll[i] = a[i];
                 for (int x = 0; x < b_len(b); x++) {
                     if (a[i] == b[x]) {
-                        arr_rep[i] = a[i];
+                        arr_rep[i] = b[x];
                     }
                 }
             } else if (i < len) {
@@ -69,8 +69,16 @@ public class Activity_5 {
         }
         for (int i = 0; i < len; i++) {
             if (!(arr_rep[i] == 0)) {
-                unionSetAll[i+1] = arr_rep[i];
+                unionSetAll[i+1+special_counter] = arr_rep[i];
+                System.out.println(swap_counter);
+                if (swap_counter > 0) {
+                    unionSetAll[i+1+swap_counter] = arr_rep[i];
+                    special_counter++;
+                }
+                swap_counter++;
             }
+            System.out.println(Arrays.toString(arr_rep));
+            System.out.println(Arrays.toString(unionSetAll));
         }
         return unionSetAll;
     }
@@ -174,7 +182,7 @@ public class Activity_5 {
         }
         for (int i = 0; i < a_len(a); i++) {
             int counter = 0;
-            for (int x = 0; x < b_len(b); x++) {
+            for (int x = 0; x < a_len(a); x++) {
                 if (b[i] != a[x]) {
                     counter++;
                     if (counter >= b_len(b)) {
@@ -192,8 +200,8 @@ public class Activity_5 {
         int comp_select = Integer.parseInt(JOptionPane.showInputDialog(null, "[0] For complement A': " +
                 "\n[1] For complement B': "));
 
-        int[] a = {1,2,3};
-        int[] b = {2,3,4};
+        int[] a = {1,2,3,4,5};
+        int[] b = {4,5,6,7,8};
 
         JOptionPane.showMessageDialog(null, "Union: " + (Arrays.toString(union(a,b))) +
                 "\nUnionAll: " + (Arrays.toString(unionAll(a,b))) +
