@@ -8,11 +8,6 @@ import java.util.Scanner;
 
 public class Activity_11 {
     public static void main(String[] args) {
-        // TODO: 1. How many Mangoes were sold within 5 days? Display it with its total cost.
-        // TODO: 2. How many Durians were sold within 5 days? Display it with its total cost.
-        // TODO: 3. How many bananas were sold within 5 days? Display it with its total cost.
-        // TODO: 4. How many were sold per day for all the fruits? Display sold fruits per day.
-        // TODO: 5. Overall Sales.
         String author = "Created by: Nathaniel P. Rijndorp";
         String fruitasan = "Mon Tue Wed Thurs Fri\n" +
                 "Mango 12 14 17 19 5 \n" +
@@ -63,11 +58,6 @@ public class Activity_11 {
                 date_fruit_sold[1] + "\n" +
                 date_fruit_sold[2] + "\n" +
                 "\nOverall sales are: " + overall_sales, author, JOptionPane.INFORMATION_MESSAGE);
-        // TODO: 1. How many Mangoes were sold within 5 days? Display it with its total cost.
-        // TODO: 2. How many Durians were sold within 5 days? Display it with its total cost.
-        // TODO: 3. How many bananas were sold within 5 days? Display it with its total cost.
-        // TODO: 4. How many were sold per day for all the fruits? Display sold fruits per day.
-        // TODO: 5. Overall Sales.
     }
 }
 

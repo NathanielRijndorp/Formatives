@@ -9,7 +9,6 @@ public class Flag {
         String vowel = "";
         boolean statement = false;
         // util
-
         while (!statement) {
             vowel = String.valueOf(JOptionPane.showInputDialog(null, new JTextArea("Type a character:"), author, 1));
             if (vowel.matches("[aeiouAEIOU]")) {
@@ -18,8 +17,6 @@ public class Flag {
             } else {
                 JOptionPane.showMessageDialog(null, new JTextArea("Not that as I am expecting. Try again."));
             }
-
         }
-
     }
 }

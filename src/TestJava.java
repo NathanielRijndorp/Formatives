@@ -1,16 +1,12 @@
 import javax.swing.*;
 import java.util.Arrays;
 
-
-
-
 public class TestJava {
-
     public static void main(String[] args) {
         // Initialization
         String title = "Adrian Carlo A. Menguita", output;
         TestJava set = new TestJava();
-        int[] A = {1, 2, 3}, B = {3, 4, 5};
+        int[] A = {1, 2, 3}, B = {2, 3, 4};
         // Output
         output = String.format("""
                 Union: %s
@@ -132,3 +128,4 @@ public class TestJava {
         return unionAll(set1, set2);
     }
 }
+

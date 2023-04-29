@@ -17,7 +17,5 @@ public class Palindromes {
         } else {
             JOptionPane.showMessageDialog(null, new JTextArea(input + " is not a Palindrome." ), author,1);
         }
-        System.out.println(reversed_str);
-
     }
 }

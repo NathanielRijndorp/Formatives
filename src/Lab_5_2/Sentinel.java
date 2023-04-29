@@ -11,30 +11,28 @@ public class Sentinel {
         int odd = 0, even = 0;
         int num_loop = 0;
         String input = "";
-
-                    // util
-            while (num_loop == 0) {
-                input += String.valueOf(JOptionPane.showInputDialog(null, new JTextArea("Enter number:"), author , 1));
-                if (input.contains("0")) {
-                    num_loop++;
-                }
-                if (input.matches("[a-z,A-Z$&+:;=?@#|'<>.^*()%!-]")) {
-                    JOptionPane.showMessageDialog(null, new JTextArea("ERROR! MUST ONLY BE NUMBERS! INPUT WILL BE RESET!"), author, JOptionPane.WARNING_MESSAGE);
-                    input = "";
-                }
-                System.out.println(input);
+        // util
+        while (num_loop == 0) {
+            input += String.valueOf(JOptionPane.showInputDialog(null, new JTextArea("Enter number:"), author , 1));
+            if (input.contains("0")) {
+                num_loop++;
             }
-            for (int i = 0; input.length()>i; i++) {
-                if (String.valueOf(input.charAt(i)).matches("[123456789]")) {
-                    num += String.valueOf(input.charAt(i)) + " ";
-                }
-                if (String.valueOf(input.charAt(i)).matches("[13579]")) {
-                    odd_num += String.valueOf(input.charAt(i)) + " ";
-                    odd_count++;
-                }
-                if (String.valueOf(input.charAt(i)).matches("[2468]")) {
-                    even_num += String.valueOf(input.charAt(i)) + " ";
-                    even_count++;
+            if (input.matches("[a-z,A-Z$&+:;=?@#|'<>.^*()%!-]")) {
+                JOptionPane.showMessageDialog(null, new JTextArea("ERROR! MUST ONLY BE NUMBERS! INPUT WILL BE RESET!"), author, JOptionPane.WARNING_MESSAGE);
+                input = "";
+            }
+        }
+        for (int i = 0; input.length()>i; i++) {
+            if (String.valueOf(input.charAt(i)).matches("[123456789]")) {
+                num += String.valueOf(input.charAt(i)) + " ";
+            }
+            if (String.valueOf(input.charAt(i)).matches("[13579]")) {
+                odd_num += String.valueOf(input.charAt(i)) + " ";
+                odd_count++;
+            }
+            if (String.valueOf(input.charAt(i)).matches("[2468]")) {
+                even_num += String.valueOf(input.charAt(i)) + " ";
+                even_count++;
             }
         }
         String output = String.format("If the inputs are\t: " + input +

@@ -12,8 +12,8 @@ public class Activity_5 {
             arr_val+= " " + arr[i];
         }
         for (int i = 0; i < arr.length; i++) {
-            reverse_arr+= " " + (arr[9-i]);
-            System.out.println(arr[9-i]);
+            reverse_arr+= " " + (arr[arr.length-1-i]);
+            System.out.println(arr[arr.length-1-i]);
         }
         JOptionPane.showMessageDialog(null, "If array elements are," + arr_val + "\nThe reverse is:"+ reverse_arr, author, JOptionPane.INFORMATION_MESSAGE);
     }

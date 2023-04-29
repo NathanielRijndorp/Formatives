@@ -70,15 +70,12 @@ public class Activity_5 {
         for (int i = 0; i < len; i++) {
             if (!(arr_rep[i] == 0)) {
                 unionSetAll[i+1+special_counter] = arr_rep[i];
-                System.out.println(swap_counter);
                 if (swap_counter > 0) {
                     unionSetAll[i+1+swap_counter] = arr_rep[i];
                     special_counter++;
                 }
                 swap_counter++;
             }
-            System.out.println(Arrays.toString(arr_rep));
-            System.out.println(Arrays.toString(unionSetAll));
         }
         return unionSetAll;
     }
@@ -200,8 +197,8 @@ public class Activity_5 {
         int comp_select = Integer.parseInt(JOptionPane.showInputDialog(null, "[0] For complement A': " +
                 "\n[1] For complement B': "));
 
-        int[] a = {1,2,3,4,5};
-        int[] b = {4,5,6,7,8};
+        int[] a = {1,2,3};
+        int[] b = {2,3,4};
 
         JOptionPane.showMessageDialog(null, "Union: " + (Arrays.toString(union(a,b))) +
                 "\nUnionAll: " + (Arrays.toString(unionAll(a,b))) +

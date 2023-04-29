@@ -41,7 +41,7 @@ public class Activity_10 {
             }
         }
         String pet_final = "";
-        String[] pet_delete = new String[matching];
+        String[] pet_delete = new String[pet.length-matching];
         System.out.println(Arrays.toString(pet_delete));
         int counter = 0;
         for (int i = 0; i < pet.length; i++) {

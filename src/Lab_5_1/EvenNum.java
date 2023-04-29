@@ -1,32 +1,29 @@
 package Lab_5_1;
 
+import javax.swing.*;
+
 public class EvenNum {
     public static void main(String[] args) {
         // variables
+        String author = "Created by: Nathaniel P. Rijndorp";
+        String str_for = "", str_while = "",str_do_while = "";
         int while_num = 0, do_while_num = 0;
         // util
-        System.out.println("Created by: Nathaniel P. Rijndorp");
-        for (int for_num = 0; for_num < 52; for_num+=2) {
-            if (for_num == 0) {
-                System.out.println("---Using For Loop---");
-            }
+        for (int for_num = 0; for_num <= 50; for_num+=2) {
             if (for_num > 0) {
-                System.out.print(for_num + " ");
+                str_for += for_num + " ";
             }
         }
         while (while_num < 50) {
-            if (while_num == 0) {
-                System.out.println("\n---Using While Loop---");
-            }
             while_num+= 2;
-            System.out.print(while_num + " ");
+            str_while += while_num + " ";
         }
         do {
-            if (do_while_num == 0) {
-                System.out.println("\n---Using Do-While Loop---");
-            }
             do_while_num+= 2;
-            System.out.print(do_while_num + " ");
+            str_do_while += do_while_num + " ";
         } while (do_while_num < 50);
+        JOptionPane.showMessageDialog(null, "---Using For Loop---\n" + str_for +
+                "\n---Using While Loop---\n" + str_while +
+                "\n---Using Do-While Loop---\n" + str_do_while, author, JOptionPane.INFORMATION_MESSAGE);
     }
 }

@@ -16,7 +16,9 @@ public class Activity_3 {
     }
     public static void main(String[] args) {
         String author = "Created by: Nathaniel P. Rijndorp";
-        String str = String.valueOf(JOptionPane.showInputDialog(null, "Enter string:", author, JOptionPane.INFORMATION_MESSAGE));
-        JOptionPane.showMessageDialog(null, "The reverse of: " + str + " is " + reverse(str) + "\nisPalindrome: " + isPalindrome(reverse(str)), author, JOptionPane.INFORMATION_MESSAGE);
+        String str = String.valueOf(JOptionPane.showInputDialog(null, "Enter string:",
+                author, JOptionPane.INFORMATION_MESSAGE));
+        JOptionPane.showMessageDialog(null, "The reverse of: " + str + " is " + reverse(str) +
+                "\nisPalindrome: " + isPalindrome(reverse(str)), author, JOptionPane.INFORMATION_MESSAGE);
     }
 }

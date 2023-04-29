@@ -2,7 +2,7 @@ package Lab_5_2;
 
 import javax.swing.*;
 
-public class Summation {
+public class CounterControlled {
     public static void main(String[] args) {
         //variables
         String author = "Created by Nathaniel P. Rijndorp";

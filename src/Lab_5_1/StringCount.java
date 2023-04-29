@@ -22,7 +22,6 @@ public class StringCount {
                     str_odd = String.valueOf(input.charAt(v));
                     str_even = String.valueOf(input.charAt(v));
                     str_special = String.valueOf(input.charAt(v));
-
                     if (str_vow.matches("[aeiouAEIOU]")) {
                         vowels++;
                     }

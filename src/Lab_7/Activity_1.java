@@ -24,5 +24,4 @@ public class Activity_1 {
                 "\nOdd: " + Odd(num) +
                 "\nEven: " + Even(num));
     }
-
 }

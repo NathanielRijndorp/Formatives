@@ -58,7 +58,7 @@ public class Friendslist {
                 JOptionPane.showMessageDialog(null, "Invalid input!");
                 task = 0;
             } else if (task == 1){
-                JOptionPane.showMessageDialog(null, "You already do this task manually bruh lol hahahaha.");
+                JOptionPane.showMessageDialog(null, "You already do this normally.");
                 task = 0;
             } else if (task == 2) {
                 //Reader for above age
@@ -88,9 +88,9 @@ public class Friendslist {
                     myReader.nextLine();
                     myReader.nextLine();
                     while (myReader.hasNextLine()) {
-                        String[] giatay = myReader.nextLine().split(splitter);
-                        if (giatay[5].equalsIgnoreCase("Friend")) {
-                            friend += "\n" + giatay[0] + " " + giatay[2] + " " + giatay[3];
+                        String[] txt_split = myReader.nextLine().split(splitter);
+                        if (txt_split[5].equalsIgnoreCase("Friend")) {
+                            friend += "\n" + txt_split[0] + " " + txt_split[2] + " " + txt_split[3];
                         }
                     }
                     System.out.println(above_age);

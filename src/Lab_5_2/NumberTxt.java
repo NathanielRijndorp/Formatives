@@ -71,10 +71,13 @@ public class NumberTxt {
                 lowest_of_all = Math.min(lowest[g], lowest_of_all);
             }
         }
+
         // sum all
         sumAll = sum_first_row + sum_second_row + sum_third_row + sum_fourth_row + sum_fifth_row;
+
         // avg all
         avgAll = (float) sumAll/50;
+
         // avg row
         avg_first_row = (float) sum_first_row / number.length;
         avg_second_row = (float) sum_second_row / number.length;
