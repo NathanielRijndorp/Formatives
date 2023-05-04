@@ -9,7 +9,11 @@ import java.time.Month;
 import java.time.Year;
 import java.util.Vector;
 
-public class MainProgram extends MyFrame implements ActionListener, MouseListener, KeyListener {
+public class MainProgram extends MyFrame implements ActionListener, MouseListener, KeyListener, WindowListener {
+    /** ALL CODE SEVERELY COMMENTED OUT  IS CODE THAT BASICALLY
+     *  GOT UPGRADED THROUGHOUT THE PDF PROCESS
+     */
+
     // data fields
     private JLabel lblID, lblName, lblType, lblGender, lblColor, lblBreed, lblPrice, lblAge, lblSearch;
     private JTextField txtID, txtName, txtColor, txtPrice, txtSearch;
@@ -31,6 +35,8 @@ public class MainProgram extends MyFrame implements ActionListener, MouseListene
     private JButton btnAdd, btnClear, btnUpdate, btnDelete, btnClose;
     // JPanel objects
     private JPanel panelPetInfo, panelBirthdate, panelButtons, panelSearch, panelTable;
+    // instantiation for the database
+    private Database db = new Database("Pet.txt");
 
     // constructor
     public static void main(String[] args) {
@@ -65,11 +71,19 @@ public class MainProgram extends MyFrame implements ActionListener, MouseListene
         btnClose.addActionListener(this);
         tbl_Pet.addMouseListener(this);
         txtSearch.addKeyListener(this);
+
+        txtName.addKeyListener(this);
+        txtPrice.addKeyListener(this);
+        txtColor.addKeyListener(this);
+        txtColor.addMouseListener(this);
+        addWindowListener(this);
         resetComponents();
+        db = new Database("Pet.txt");
+        db.displayRecords(model_pet);
         //pack();
     } // end of constructor
     public void initializedComponents() {
-        //label components
+        // label components
         lblID = new JLabel("ID: ");
         lblName = new JLabel("Name: ");
         lblType = new JLabel("Type: ");
@@ -97,13 +111,13 @@ public class MainProgram extends MyFrame implements ActionListener, MouseListene
         btnClose = new JButton("Close");
     }
     public void petInfo() {
-        //initialized variables
+        // initialized variables
         panelPetInfo = new JPanel();
         panelPetInfo.setBorder(BorderFactory.createTitledBorder("Pet Registration Form"));
         panelPetInfo.setLayout(new GridLayout(7,2));
         panelPetInfo.setFont(f);
         panelPetInfo.setOpaque(false);
-        //added components
+        // added components
         panelPetInfo.add(lblID); panelPetInfo.add(txtID);
         panelPetInfo.add(lblName); panelPetInfo.add(txtName);
         panelPetInfo.add(lblGender); panelPetInfo.add(cboGender);
@@ -111,23 +125,28 @@ public class MainProgram extends MyFrame implements ActionListener, MouseListene
         panelPetInfo.add(lblBreed); panelPetInfo.add(cboBreed);
         panelPetInfo.add(lblColor); panelPetInfo.add(txtColor);
         panelPetInfo.add(lblPrice); panelPetInfo.add(txtPrice);
-    }
+    } // end of method
     public void loadToComboBox() {
-        //gender items
+        // gender items
         cboGender.addItem("Male");
         cboGender.addItem("Female");
-        //pet type items
-        cboType.addItem("Dog");
-        cboType.addItem("Cat");
-        cboType.addItem("Bird");
-        cboType.addItem("Fish");
-        //breed items
-        cboBreed.addItem("Persian");
-        cboBreed.addItem("Siamese");
-        cboBreed.addItem("Askal");
-        cboBreed.addItem("Siberian");
-        cboBreed.addItem("Bulldog");
-    }
+        // pet type items
+        db = new Database("Type.txt");
+        db.fillToComboBox(cboType);
+//        cboType.addItem("Dog");
+//        cboType.addItem("Cat");
+//        cboType.addItem("Bird");
+//        cboType.addItem("Fish");
+
+        // breed items
+        db = new Database("Breed.txt");
+        db.fillToComboBox(cboBreed);
+//        cboBreed.addItem("Persian");
+//        cboBreed.addItem("Siamese");
+//        cboBreed.addItem("Askal");
+//        cboBreed.addItem("Siberian");
+//        cboBreed.addItem("Bulldog");
+    } // end of method
     public void panelBirthdate() {
         panelBirthdate = new JPanel();
         lblAge = new JLabel("Age");
@@ -195,8 +214,23 @@ public class MainProgram extends MyFrame implements ActionListener, MouseListene
             model_pet.removeRow(i);
             resetComponents();
         } else if (e.getSource().equals(btnClose)) {
+//            String records = "";
+//            // 0 to number of rows or records
+//            for (int r = 0; r < model_pet.getRowCount(); r++) {
+//                // 0 to number of columns or fields
+//                for (int c = 0; c < model_pet.getColumnCount(); c++) {
+//                    /** concatenation of values from table as it fetches the record
+//                     * and separator for delimeter #
+//                     */
+//                    records+= model_pet.getValueAt(r, c) + "#";
+//                } // end of inner loop
+//                records+="\n"; // concatenate each entire record of the table to the next line
+//                // save the read records/values from table to textfile
+//            } // end of outer loop
+//            db.storeToFile(records);
+            process();
             System.exit(0);
-        }
+        } // end of if
     } // end of method
     public void panelPetButtons() {
         panelButtons = new JPanel();
@@ -252,8 +286,10 @@ public class MainProgram extends MyFrame implements ActionListener, MouseListene
         rowData.add(txtColor.getText());
         rowData.add(txtPrice.getText());
         rowData.add(cboMonth.getSelectedItem());
+        rowData.add(cboDay.getSelectedItem());
         rowData.add(cboYear.getSelectedItem());
         rowData.add(txtAge.getText());
+
     }
     public void resetComponents() {
         txtID.setText(getRowCount());
@@ -286,28 +322,51 @@ public class MainProgram extends MyFrame implements ActionListener, MouseListene
         btnUpdate.setEnabled(true);
         btnDelete.setEnabled(true);
     }
+    public void process() {
+        String records = "";
+        // 0 to number of rows of records
+        for (int r = 0; r < model_pet.getRowCount(); r++) {
+            // 0 to number of columns or fields
+            for (int c = 0; c < model_pet.getColumnCount(); c++) {
+                /** concatenation of values from table as it fetches the record
+                 * and separator delimter #
+                 */
+                records+= model_pet.getValueAt(r, c) + "#";
+            } // end of inner loop
+            records+="\n"; // concatenate each entire record of the table to the next line
+            // save the read records/values from the table to textfile
+        } // end of outer loop
+        db.storeToFile(records);
+    } // end of method
     @Override
     public void mouseClicked(MouseEvent e) {
-        int i = tbl_Pet.getSelectedRow();
-        // JOptionPane.showMessageDialog(null, "Row " + i + " is selected");
-        /** Set the text of the swing components based on the table selection
-         * i - row selected
-         * while the numerical values represent the columns of your table
-         */
-        txtID.setText(tbl_Pet.getValueAt(i, 0) + "");
-        txtName.setText(tbl_Pet.getValueAt(i, 1) + "");
-        cboGender.setSelectedItem((tbl_Pet.getValueAt(i, 2) + ""));
-        cboType.setSelectedItem((tbl_Pet.getValueAt(i, 3) + ""));
-        cboBreed.setSelectedItem((tbl_Pet.getValueAt(i, 4) + ""));
-        txtColor.setText((tbl_Pet.getValueAt(i, 5) + ""));
-        txtPrice.setText((tbl_Pet.getValueAt(i, 6) + ""));
-        cboMonth.setSelectedItem((tbl_Pet.getValueAt(i, 7) + ""));
-        cboDay.setSelectedItem((tbl_Pet.getValueAt(i, 8) + ""));
-        cboYear.setSelectedItem((tbl_Pet.getValueAt(i, 9) + ""));
-        txtAge.setText((tbl_Pet.getValueAt(i, 10) + ""));
+        if (e.getSource().equals(tbl_Pet)) {
+            int i = tbl_Pet.getSelectedRow();
+            // JOptionPane.showMessageDialog(null, "Row " + i + " is selected");
+            /** Set the text of the swing components based on the table selection
+             * i - row selected
+             * while the numerical values represent the columns of your table
+             */
+            txtID.setText(tbl_Pet.getValueAt(i, 0) + "");
+            txtName.setText(tbl_Pet.getValueAt(i, 1) + "");
+            cboGender.setSelectedItem((tbl_Pet.getValueAt(i, 2) + ""));
+            cboType.setSelectedItem((tbl_Pet.getValueAt(i, 3) + ""));
+            cboBreed.setSelectedItem((tbl_Pet.getValueAt(i, 4) + ""));
+            txtColor.setText((tbl_Pet.getValueAt(i, 5) + ""));
+            txtPrice.setText((tbl_Pet.getValueAt(i, 6) + ""));
+            cboMonth.setSelectedItem((tbl_Pet.getValueAt(i, 7) + ""));
+            cboDay.setSelectedItem((tbl_Pet.getValueAt(i, 8) + ""));
+            cboYear.setSelectedItem((tbl_Pet.getValueAt(i, 9) + ""));
+            txtAge.setText((tbl_Pet.getValueAt(i, 10) + ""));
 
-        tableClick();
-    }
+            tableClick();
+        } else if (e.getSource().equals(txtColor)) {
+            Color color = JColorChooser.showDialog(null, "Choose", Color.black);
+
+            txtColor.setBackground(color);
+            txtColor.setText("");
+        } // end of if statement
+    } // end of method
 
     @Override
     public void mousePressed(MouseEvent e) {
@@ -331,8 +390,20 @@ public class MainProgram extends MyFrame implements ActionListener, MouseListene
 
     @Override
     public void keyTyped(KeyEvent e) {
-        // TODO Auto Generated method stub
-    }
+        if (e.getSource().equals(txtPrice)) {
+            // if number only
+            if (e.getKeyChar()>='a' && e.getKeyChar()<='z') {
+                e.consume();
+            }
+        } else if (e.getSource().equals(txtName) || e.getSource().equals(txtColor)) {
+            // if character only
+            char ch = e.getKeyChar();
+            if (!((Character.isWhitespace(ch) || e.getKeyChar()>='a' || e.getKeyChar()>='A') &&
+                    (e.getKeyChar()<='z' || e.getKeyChar()<='Z'))) {
+                e.consume();
+            } // end of if
+        } // end of if
+    } // end of method
 
     @Override
     public void keyPressed(KeyEvent e) {
@@ -351,8 +422,46 @@ public class MainProgram extends MyFrame implements ActionListener, MouseListene
             /** setting the TableRowSorter which filters the data in the table via value typed in search
              *  search - the keyword to be searched and find
              *  intger (0) - the column you want to look into. it can have as much as values as it can
+             *  can also be written as (search, 0,1) to use the first two columns.
+             *  0 representing the id and 1 representing the name column.
              */
-            tbl_sort.setRowFilter(RowFilter.regexFilter(search, 0));
+            tbl_sort.setRowFilter(RowFilter.regexFilter(search, 0,1));
         }
+    } // end of method
+
+    @Override
+    public void windowOpened(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowClosing(WindowEvent e) {
+        process();
+        System.exit(0);
+    }
+
+    @Override
+    public void windowClosed(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowIconified(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowDeiconified(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowActivated(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowDeactivated(WindowEvent e) {
+
     }
 } // end of class
