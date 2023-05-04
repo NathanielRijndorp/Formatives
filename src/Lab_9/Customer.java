@@ -1,9 +1,6 @@
 package Lab_9;
 
 import javax.swing.*;
-import java.io.ObjectStreamException;
-import java.util.Arrays;
-import java.util.stream.IntStream;
 
 public class Customer {
     public static void main(String[] args) {
@@ -35,7 +32,6 @@ public class Customer {
                 case "[A]dd Customer":
                     try {
                         do {
-                            System.out.println("hala");
                             customer_id[index] = Integer.parseInt(JOptionPane.showInputDialog("Customer Id: "));
                             for (int g = 0; g < index; g++) {
                                 if (customer_id[index] == customer_id[g]) {
