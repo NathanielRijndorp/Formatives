@@ -38,7 +38,7 @@ public class CarRental extends CarFrame implements ActionListener, MouseListener
     // data fields -panelButtons
     private JButton btnAdd, btnClear, btnUpdate, btnDelete, btnClose, btnEdit;
     // JPanel objects
-    private JPanel panelPetInfo, panelBirthdate, panelButtons, panelSearch, panelTable;
+    private JPanel panelClientInfo, panelBirthdate, panelButtons, panelSearch, panelTable;
     // instantiation for the database
     private CarDatabase db;
 
@@ -48,20 +48,20 @@ public class CarRental extends CarFrame implements ActionListener, MouseListener
     } // end of main
     public CarRental() {
         initializedComponents(); // method for components
-        petInfo();
+        clientInfo();
         // panel for pet info
-        add(panelPetInfo).setBounds(10,10,300,250);
+        add(panelClientInfo).setBounds(10,10,300,250);
         panelBirthdate(); // method call for birthdate panel
         // adding panel to Frame
         add(panelBirthdate).setBounds(10,260,300,80);
-        panelPetButtons(); // method call for pet buttons
-        panelPetInfo.setOpaque(true);
+        panelCarButtons(); // method call for pet buttons
+        panelClientInfo.setOpaque(true);
         // adding panel to Frame
-        add(panelButtons).setBounds(40,340,600,30);
+        add(panelButtons).setBounds(40,350,600,30);
         // calling method directly as it returns JPanel
-        add(panelPetSearch()).setBounds(320,20,300,30);
+        add(panelCarSearch()).setBounds(320,20,300,30);
         // calling method directly as it returns JPanel
-        add(panelPetTable()).setBounds(320,50,827,290);
+        add(panelCarTable()).setBounds(320,50,827,290);
         setLayout(null);
         setMyFrame("Car Rental", 1200, 420, true);
         setLocationRelativeTo(null);
@@ -118,22 +118,22 @@ public class CarRental extends CarFrame implements ActionListener, MouseListener
         btnDelete = new JButton("Delete");
         btnClose = new JButton("Close");
     } // end of method
-    public void petInfo() {
+    public void clientInfo() {
         // initialized variables
-        panelPetInfo = new JPanel();
-        panelPetInfo.setBorder(BorderFactory.createTitledBorder("Car Rental"));
-        panelPetInfo.setLayout(new GridLayout(7,2));
-        panelPetInfo.setFont(f);
-        panelPetInfo.setOpaque(false);
+        panelClientInfo = new JPanel();
+        panelClientInfo.setBorder(BorderFactory.createTitledBorder("Car Rental"));
+        panelClientInfo.setLayout(new GridLayout(7,2));
+        panelClientInfo.setFont(f);
+        panelClientInfo.setOpaque(false);
         // added components
-        panelPetInfo.add(lblID); panelPetInfo.add(txtID);
-        panelPetInfo.add(lblName); panelPetInfo.add(txtName);
-        panelPetInfo.add(lblGender); panelPetInfo.add(cboGender);
-        panelPetInfo.add(lblCar); panelPetInfo.add(cboCar);
-        panelPetInfo.add(lblDaysToRent); panelPetInfo.add(cboRentDays);
+        panelClientInfo.add(lblID); panelClientInfo.add(txtID);
+        panelClientInfo.add(lblName); panelClientInfo.add(txtName);
+        panelClientInfo.add(lblGender); panelClientInfo.add(cboGender);
+        panelClientInfo.add(lblCar); panelClientInfo.add(cboCar);
+        panelClientInfo.add(lblDaysToRent); panelClientInfo.add(cboRentDays);
 //        panelPetInfo.add(cboRentDateEnd);
-        panelPetInfo.add(lblColor); panelPetInfo.add(txtColor);
-        panelPetInfo.add(lblRate); panelPetInfo.add(txtRate);
+        panelClientInfo.add(lblColor); panelClientInfo.add(txtColor);
+        panelClientInfo.add(lblRate); panelClientInfo.add(txtRate);
     } // end of method
     public void loadToComboBox() {
         // gender items
@@ -272,7 +272,7 @@ public class CarRental extends CarFrame implements ActionListener, MouseListener
             System.exit(0);
         } // end of if
     } // end of method
-    public void panelPetButtons() {
+    public void panelCarButtons() {
         panelButtons = new JPanel();
         panelButtons.setLayout(new GridLayout(1,5,4,2));
         panelButtons.add(btnAdd);
@@ -284,7 +284,7 @@ public class CarRental extends CarFrame implements ActionListener, MouseListener
         panelButtons.add(btnDelete);
         panelButtons.add(btnClose);
     } // end of method
-    public JPanel panelPetSearch() {
+    public JPanel panelCarSearch() {
         panelSearch = new JPanel();
         lblSearch = new JLabel("Search");
         txtSearch = new JTextField(10);
@@ -294,7 +294,7 @@ public class CarRental extends CarFrame implements ActionListener, MouseListener
         panelSearch.setOpaque(false);
         return panelSearch;
     } // end of method
-    public JPanel panelPetTable() {
+    public JPanel panelCarTable() {
         panelTable = new JPanel();
         tbl_Car = new JTable();
         model_car = new DefaultTableModel();
